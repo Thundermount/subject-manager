@@ -56,7 +56,7 @@ namespace Manager
             records[id] = default(T);
             if (records.Length > id + 1)
             {
-                for(int i = id + 1; i < records.Length; i+=2)
+                for(int i = id + 1; i < records.Length; i++)
                 {
                     records[i - 1] = records[i];
                     records[i] = default(T);

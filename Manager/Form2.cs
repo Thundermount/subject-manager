@@ -32,6 +32,16 @@ namespace Manager
 
         private void Form2_Shown(object sender, EventArgs e)
         {
+            UpdateList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
             FileIO<Subject> s = new FileIO<Subject>();
             Subject[] subjects = s.Read(subject_f);
             if (subjects == null) return;
