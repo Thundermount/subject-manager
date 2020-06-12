@@ -11,9 +11,20 @@ namespace Manager
         static XmlSerializer formatter;
         static FileIO()
         {
-            formatter = new XmlSerializer(typeof(T));
+            formatter = new XmlSerializer(typeof(T[]));
         }
-        public void Write(string filename, object data)
+        public void Write(string filename, T data)
+        {
+            T[] records = Read(filename);
+            if (records != null) records[records.Length] = data;
+            else
+            {
+                T[] rc = { data };
+                records = rc;
+            }
+            WriteA(filename, records);
+        }
+        private void WriteA(string filename, T[] data)
         {
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
@@ -21,23 +32,37 @@ namespace Manager
                 fs.Close();
             }
         }
-        public T Read(string filename)
+        public T[] Read(string filename)
         {
-            T data;
+            T[] data;
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 try
                 {
-                    data = (T)formatter.Deserialize(fs);
+                    data = (T[])formatter.Deserialize(fs);
                 }
                 catch(System.InvalidOperationException e)
                 {
                     fs.Close();
-                    return default(T);
+                    return default(T[]);
                 }
                 fs.Close();
             }
             return data;
+        }
+        public void RemoveId(string filename, int id)
+        {
+            T[] records = Read(filename);
+            records[id] = default(T);
+            if (records.Length > id + 1)
+            {
+                for(int i = id + 1; i < records.Length; i+=2)
+                {
+                    records[i - 1] = records[i];
+                    records[i] = default(T);
+                }
+            }
+            
         }
     }
 }

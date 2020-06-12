@@ -32,7 +32,7 @@ namespace Manager
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-            FileIO<Subject[]> s = new FileIO<Subject[]>();
+            FileIO<Subject> s = new FileIO<Subject>();
             Subject[] subjects = s.Read(subject_f);
             if (subjects == null) return;
             foreach (var item in subjects)
