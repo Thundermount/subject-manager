@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Manager
@@ -15,6 +16,7 @@ namespace Manager
         public Form2()
         {
             InitializeComponent();
+            if (!Directory.Exists("./root")) Directory.CreateDirectory("root");
         }
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -25,6 +27,11 @@ namespace Manager
         private void button1_Click(object sender, EventArgs e)
         {
             new Add().Show();
+        }
+
+        private void Form2_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }
