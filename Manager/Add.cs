@@ -24,16 +24,8 @@ namespace Manager
             Subject sb = new Subject();
             sb.Subject_Name = textBox1.Text;
             sb.Teacher = textBox2.Text;
-            if (!Directory.Exists("./root"))
-            {
-                Directory.CreateDirectory("./root");
-            }
-            Directory.CreateDirectory("./root/" + sb.Subject_Name);
-            XmlSerializerNamespaces sr = new XmlSerializerNamespaces();
-            StreamWriter tw = new StreamWriter("./root/subjects.xml");
-            sr.Add("","");
-            new XmlSerializer(typeof(Subject)).Serialize(tw, sb,sr);
-            tw.Close();
+            FileIO<Subject> wr = new FileIO<Subject>();
+            wr.Write(Form2.subject_f, sb);
         }
     }
 }

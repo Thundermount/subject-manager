@@ -13,6 +13,7 @@ namespace Manager
 {
     public partial class Form2 : Form
     {
+        public const string subject_f = "./root/subjects.xml";
         public Form2()
         {
             InitializeComponent();
@@ -31,7 +32,13 @@ namespace Manager
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-
+            FileIO<Subject[]> s = new FileIO<Subject[]>();
+            Subject[] subjects = s.Read(subject_f);
+            if (subjects == null) return;
+            foreach (var item in subjects)
+            {
+                listBox1.Items.Add(item.Subject_Name + "    " + item.Teacher);
+            }
         }
     }
 }
