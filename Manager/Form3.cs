@@ -12,9 +12,20 @@ namespace Manager
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        int id;
+        Subject record;
+        public Form3(int subject_id)
         {
+            id = subject_id;
             InitializeComponent();
+            FileIO<Subject> fl = new FileIO<Subject>();
+            record = fl.Read(Form2.subject_f)[id];
+            this.Name = record.Subject_Name;
+        }
+
+        private void Form3_Shown(object sender, EventArgs e)
+        {
+            
         }
     }
 }

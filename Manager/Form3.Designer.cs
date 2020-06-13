@@ -48,6 +48,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Shown += new System.EventHandler(this.Form3_Shown);
             this.ResumeLayout(false);
 
         }

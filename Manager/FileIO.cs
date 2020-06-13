@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -11,20 +12,21 @@ namespace Manager
         static XmlSerializer formatter;
         static FileIO()
         {
-            formatter = new XmlSerializer(typeof(T[]));
+            formatter = new XmlSerializer(typeof(List<T>));
         }
         public void Write(string filename, T data)
         {
-            T[] records = Read(filename);
-            if (records != null) records[records.Length] = data;
+            List<T> records = Read(filename);
+            if (records != null) records.Add(data);
             else
             {
-                T[] rc = { data };
-                records = rc;
+                records = new List<T>();
+                records.Add(data);
             }
             WriteA(filename, records);
         }
-        private void WriteA(string filename, T[] data)
+        // Приватная функция которая записывает массив данных в файл
+        private void WriteA(string filename, List<T> data)
         {
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
@@ -32,36 +34,33 @@ namespace Manager
                 fs.Close();
             }
         }
-        public T[] Read(string filename)
+        public List<T> Read(string filename)
         {
-            T[] data;
+            List<T> data;
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 try
                 {
-                    data = (T[])formatter.Deserialize(fs);
+                    data = (List<T>)formatter.Deserialize(fs);
                 }
                 catch(System.InvalidOperationException e)
                 {
                     fs.Close();
-                    return default(T[]);
+                    return default(List<T>);
                 }
                 fs.Close();
             }
             return data;
         }
+        // Удалить элемент по его id
         public void RemoveId(string filename, int id)
         {
-            T[] records = Read(filename);
-            records[id] = default(T);
-            if (records.Length > id + 1)
-            {
-                for(int i = id + 1; i < records.Length; i++)
-                {
-                    records[i - 1] = records[i];
-                    records[i] = default(T);
-                }
-            }
+            if (id == -1) return;
+            List<T> records = Read(filename);
+            File.Copy(filename, filename + ".backup",true);
+            File.Delete(filename);
+            records.RemoveAt(id);
+            WriteA(filename,records);
             
         }
     }
