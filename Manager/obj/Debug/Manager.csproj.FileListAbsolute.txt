@@ -10,3 +10,4 @@ D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.pdb
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Form2.resources
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Add.resources
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Form3.resources
+D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.AddWork.resources

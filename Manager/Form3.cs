@@ -16,6 +16,7 @@ namespace Manager
         int id;
         Subject record;
         string subject_folder;
+        string filename;
         public Form3(int subject_id)
         {
             id = subject_id;
@@ -24,13 +25,16 @@ namespace Manager
             record = fl.Read(Form2.subject_f)[id];
             subject_folder = "./root/" + record.Subject_Name;
             this.Name = record.Subject_Name;
+            filename = subject_folder + "/works.xml";
             if (!Directory.Exists(subject_folder)) Directory.CreateDirectory(subject_folder);
         }
 
         private void UpdateList()
         {
-            FileIO<Work> fl = new FileIO<Work>();
-            List<Work> wk = fl.Read(subject_folder + "/Works.xml");
+            listBox1.Items.Clear();
+            FileIO<Work> s = new FileIO<Work>();
+            List<Work> wk = s.Read(filename);
+            if (wk == null) return;
             foreach (var item in wk)
             {
                 listBox1.Items.Add(item.name);
@@ -44,7 +48,12 @@ namespace Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
+            new AddWork(record.Subject_Name).ShowDialog();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UpdateList();
         }
     }
 }

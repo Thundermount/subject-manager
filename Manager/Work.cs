@@ -7,20 +7,13 @@ using System.Threading.Tasks;
 
 namespace Manager
 {
-    class Work : Subject
+    // Поскольку я не могу сериализовать в xml класс с аргументами в конструкторе
+    // мне приходится заполнять поля напрямую
+    public class Work
     {
         public string name;
         public State state;
-        public Work(string name, State state)
-        {
-            this.name = name;
-            this.state = state;
-        }
-        public Work(string name)
-        {
-            this.name = name;
-            this.state = State.NotReady;
-        }
+
         public void ChangeState(State state)
         {
             this.state = state;
@@ -32,7 +25,7 @@ namespace Manager
         }
 
     }
-    enum State
+    public enum State
     {
         Ready,
         InProgress,
