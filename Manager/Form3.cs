@@ -59,7 +59,7 @@ namespace Manager
         private void button4_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex == -1) return;
-            new AddWork(record.Subject_Name, listBox1.SelectedIndex);
+            new AddWork(record.Subject_Name, listBox1.SelectedIndex).ShowDialog();
         }
     }
 }

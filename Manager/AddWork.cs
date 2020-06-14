@@ -19,7 +19,7 @@ namespace Manager
         string work_file;
         public AddWork(string subject)
         {
-            work_file = "./root/" + subject + "/work.xml";
+            work_file = "./root/" + subject + "/works.xml";
             this.subject = subject;
             InitializeComponent();
             button1.Text = "Добавить";
@@ -28,7 +28,7 @@ namespace Manager
         // This one is used only if changing work
         public AddWork(string subject, int work_id)
         {
-            work_file = "./root/" + subject + "/work.xml";
+            work_file = "./root/" + subject + "/works.xml";
             this.subject = subject;
             id = work_id;
             FileIO<Work> wk = new FileIO<Work>();
@@ -43,30 +43,31 @@ namespace Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            if (work == null) Add_Work();
+            else Change_Work();
         }
         // Creates new work in file
         private void Add_Work()
         {
-            File.Create(textBox1.Text);
             FileIO<Work> wk = new FileIO<Work>();
-            Work work = new Work();
-            work.name = textBox1.Text;
-            work.state = (State) comboBox1.SelectedIndex;
-            wk.Write(work_file,work);
+            Work add_work = new Work();
+            add_work.name = textBox1.Text;
+            add_work.state = (State) comboBox1.SelectedIndex;
+            File.Create("./root/" + subject + "/" + add_work.name);
+            wk.Write(work_file,add_work);
             MessageBox.Show("Работа добавлена");
             this.Close();
         }
         // Changes existing work
         private void Change_Work()
         {
-            Work work = new Work();
-            work.name = textBox1.Text;
-            work.state = (State)comboBox1.SelectedIndex;
-            File.Move(work.name, work.name);
+            Work change_work = new Work();
+            change_work.name = textBox1.Text;
+            change_work.state = (State)comboBox1.SelectedIndex;
+            File.Move("./root/" + subject + "/" + work.name, "./root/" + subject + "/" + change_work.name);
             FileIO<Work> wk = new FileIO<Work>();
-            wk.RemoveId(work.name, id);
-            wk.Write(work_file,work);
+            wk.RemoveId(work_file, id);
+            wk.Write(work_file,change_work);
             MessageBox.Show("Изменения успешно выполнены");
             this.Close();
         }
