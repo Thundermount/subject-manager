@@ -37,7 +37,7 @@ namespace Manager
             if (wk == null) return;
             foreach (var item in wk)
             {
-                listBox1.Items.Add(item.name);
+                listBox1.Items.Add(item.name + "    " + item.state.ToString());
             }
         }
 
@@ -54,6 +54,12 @@ namespace Manager
         private void button3_Click(object sender, EventArgs e)
         {
             UpdateList();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1) return;
+            new AddWork(record.Subject_Name, listBox1.SelectedIndex);
         }
     }
 }

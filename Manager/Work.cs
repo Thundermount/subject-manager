@@ -27,9 +27,9 @@ namespace Manager
     }
     public enum State
     {
-        Ready,
+        NotReady,
         InProgress,
-        NotReady
+        Ready
     }
 
     
