@@ -61,5 +61,14 @@ namespace Manager
             if (listBox1.SelectedIndex == -1) return;
             new AddWork(record.Subject_Name, listBox1.SelectedIndex).ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1) return;
+            FileIO<Work> fl = new FileIO<Work>();
+            List<Work> works = fl.Read(subject_folder + "/works.xml");
+            File.Delete(subject_folder + "/" + works[listBox1.SelectedIndex].name);
+            fl.RemoveId(subject_folder + "/works.xml", listBox1.SelectedIndex);
+        }
     }
 }
