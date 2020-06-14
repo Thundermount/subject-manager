@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfWork xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Work>
-    <name>poot.doc</name>
-    <state>InProgress</state>
+    <name>Лаба1.docs</name>
+    <state>NotReady</state>
   </Work>
 </ArrayOfWork>

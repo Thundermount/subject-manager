@@ -59,5 +59,11 @@ namespace Manager
             s.RemoveId(subject_f, listBox1.SelectedIndex);
             UpdateList();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1) return;
+            new Form3(listBox1.SelectedIndex).Show();
+        }
     }
 }
