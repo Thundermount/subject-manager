@@ -23,7 +23,7 @@ namespace Manager
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listBox1.SelectedIndex == -1) return;
-
+            new Form3(listBox1.SelectedIndex).Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
