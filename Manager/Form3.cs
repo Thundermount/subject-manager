@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace Manager
 {
@@ -37,7 +39,7 @@ namespace Manager
             if (wk == null) return;
             foreach (var item in wk)
             {
-                listBox1.Items.Add(item.name + "    " + item.state.ToString());
+                listBox1.Items.Add(item.name + "    " + Work.StateStrings[((int)item.state)]);
             }
         }
 
@@ -69,6 +71,11 @@ namespace Manager
             List<Work> works = fl.Read(subject_folder + "/works.xml");
             File.Delete(subject_folder + "/" + works[listBox1.SelectedIndex].name);
             fl.RemoveId(subject_folder + "/works.xml", listBox1.SelectedIndex);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Path.GetFullPath(subject_folder));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Manager
 {
@@ -24,7 +25,11 @@ namespace Manager
             fl.RemoveId(path, work_id);
         }
 
+        // Да потому что если писать эксеншен то это столько мусорного кода что ну его нафиг
+        public static readonly string[] StateStrings = {"Не готов", "В работе", "Готов"};
+
     }
+
     public enum State
     {
         NotReady,
@@ -33,4 +38,5 @@ namespace Manager
     }
 
     
+
 }

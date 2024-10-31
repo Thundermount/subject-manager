@@ -11,3 +11,17 @@ D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Form2
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Add.resources
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.Form3.resources
 D:\Documents\Visual Studio 2017\Projects\Manager\Manager\obj\Debug\Manager.AddWork.resources
+D:\Documents\subject-manager\Manager\bin\Debug\Manager.exe.config
+D:\Documents\subject-manager\Manager\bin\Debug\Manager.exe
+D:\Documents\subject-manager\Manager\bin\Debug\Manager.pdb
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.Add.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.AddWork.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.Form1.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.Form2.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.Form3.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.Properties.Resources.resources
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.exe
+D:\Documents\subject-manager\Manager\obj\Debug\Manager.pdb
