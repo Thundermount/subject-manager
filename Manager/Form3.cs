@@ -39,7 +39,8 @@ namespace Manager
             if (wk == null) return;
             foreach (var item in wk)
             {
-                listBox1.Items.Add(item.name + "    " + Work.StateStrings[((int)item.state)]);
+                this.listBox1.Items.Add(new Dictionary<string, object> { { "Text", item.name + "    " + Work.StateStrings[((int)item.state)]},
+                                                         { "ForeColor", Work.StateColors[(int)item.state]}});
             }
         }
 

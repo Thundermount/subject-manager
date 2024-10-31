@@ -1,4 +1,9 @@
-﻿namespace Manager
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Manager
 {
     partial class Form3
     {
@@ -38,12 +43,14 @@
             // 
             // listBox1
             // 
+            this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(42, 12);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(722, 372);
             this.listBox1.TabIndex = 0;
+            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             // 
             // button1
             // 
@@ -112,7 +119,25 @@
             this.ResumeLayout(false);
 
         }
+        void listBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index == -1) return;
 
+            Graphics g = e.Graphics;
+            Dictionary<string, object> props = (this.listBox1.Items[e.Index] as Dictionary<string, object>);
+            SolidBrush backgroundBrush = new SolidBrush(props.ContainsKey("BackColor") ? (Color)props["BackColor"] : e.BackColor);
+            SolidBrush foregroundBrush = new SolidBrush(props.ContainsKey("ForeColor") ? (Color)props["ForeColor"] : e.ForeColor);
+            Font textFont = props.ContainsKey("Font") ? (Font)props["Font"] : e.Font;
+            string text = props.ContainsKey("Text") ? (string)props["Text"] : string.Empty;
+            RectangleF rectangle = new RectangleF(new PointF(e.Bounds.X, e.Bounds.Y), new SizeF(e.Bounds.Width, g.MeasureString(text, textFont).Height));
+
+            g.FillRectangle(backgroundBrush, rectangle);
+            g.DrawString(text, textFont, foregroundBrush, rectangle);
+
+            backgroundBrush.Dispose();
+            foregroundBrush.Dispose();
+            g.Dispose();
+        }
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;

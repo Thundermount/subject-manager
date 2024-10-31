@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Manager
 {
@@ -27,6 +28,7 @@ namespace Manager
 
         // Да потому что если писать эксеншен то это столько мусорного кода что ну его нафиг
         public static readonly string[] StateStrings = {"Не готов", "В работе", "Готов"};
+        public static readonly Color[] StateColors = { Color.Red, Color.Yellow, Color.Green };
 
     }
 

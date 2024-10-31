@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <ArrayOfWork xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Work>
-    <name>Практика1.doc</name>
+    <name>Лаба1.docx</name>
     <state>NotReady</state>
   </Work>
   <Work>
-    <name>Лаба1.docx</name>
-    <state>InProgress</state>
+    <name>Практика1.doc</name>
+    <state>Ready</state>
   </Work>
 </ArrayOfWork>
